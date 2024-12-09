@@ -1,0 +1,28 @@
+/* static/css/equipo.css */
+
+.equipo-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.equipo-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.equipo-card img {
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.cuerpo {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+}

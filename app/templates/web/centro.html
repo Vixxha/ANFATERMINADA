@@ -1,0 +1,158 @@
+{% extends "web/base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tabla.css' %}">
+<style>
+    /* Estilos CSS para la tabla de posiciones */
+    #table-section {
+        margin-top: 0px;
+        /* Ajusta el valor según sea necesario para eliminar el espacio blanco */
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        /* Borde para la tabla */
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        /* Borde para las celdas */
+        padding: 10px;
+        /* Espaciado interno para mejorar la apariencia */
+    }
+
+    tr {
+        background-color: #ffffff;
+        /* Cambia el color de fondo de todas las filas a blanco */
+    }
+
+    th {
+        background-color: #343a40;
+        /* Color de fondo para los encabezados */
+        color: #ffffff;
+        /* Color del texto para los encabezados */
+    }
+
+    tr:hover {
+        background-color: #BBE2EC;
+        /* Cambia el color de fondo al pasar el mouse */
+    }
+
+    /* Estilo para la columna de posición */
+    .posicion-column {
+        width: 4%;
+        text-align: center;
+        /* Alinea el contenido al centro */
+    }
+
+    /* Estilo para la columna de equipo */
+    .equipo-column {
+        width: 620px;
+    }
+
+    /* Estilo para la columna de goles */
+    .goles-column {
+        width: 50px;
+        text-align: center;
+        /* Alinea el contenido al centro */
+    }
+
+    /* Estilo para la columna de partidos jugados */
+    .partidos-column {
+        width: 50px;
+        text-align: center;
+        /* Alinea el contenido al centro */
+    }
+
+    /* Estilo para la columna de puntos (PTS) */
+    .puntos-column {
+        width: 50px;
+        text-align: center;
+        /* Alinea el contenido al centro */
+        font-weight: bold;
+        /* Hace que el texto sea más grueso */
+        color: white;
+        /* Color llamativo para los puntos */
+        background-color: #70a34a;
+        /* Color de fondo para resaltar los puntos */
+    }
+
+    /* Estilo para la columna de diferencia de goles */
+    .diff-column {
+        width: 50px;
+        text-align: center;
+        /* Alinea el contenido al centro */
+    }
+
+    /* Haz que la tabla sea responsive */
+    @media screen and (max-width: 768px) {
+        table {
+            overflow-x: auto;
+            display: block;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            /* Ajusta el espaciado interno de las celdas */
+            font-size: 12px;
+            /* Reduce el tamaño del texto en las celdas */
+        }
+
+        th:first-child,
+        td:first-child {
+            min-width: 30px;
+            /* Define un ancho mínimo para la primera columna (posición) */
+        }
+
+        .equipo-column {
+            width: auto;
+            /* Deja que la columna del equipo se ajuste automáticamente */
+        }
+    }
+</style>
+
+<div id="table-section">
+    <table>
+        <thead>
+            <tr>
+                <th class="posicion-column">Posición</th>
+                <th class="equipo-column">Equipo</th>
+                <th class="puntos-column">PTS</th>
+                <th class="partidos-column">PJ</th>
+                <th class="partidos-column">PG</th>
+                <th class="partidos-column">PE</th>
+                <th class="partidos-column">PP</th>
+                <th class="goles-column">GF</th>
+                <th class="goles-column">GC</th>
+                <th class="diff-column">DIF</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos_centro %}
+            <tr class="sombreado-blanco">
+                <td class="posicion-column">{{ forloop.counter }}</td>
+                <td class="equipo-column">
+                    {% if equipo.imagen %}
+                    <img src="{{ equipo.imagen.url }}" alt="{{ equipo.nombre_equipo }}" width="30" height="30"
+                        style="margin-right: 5px;">
+                    {% endif %}
+                    {{ equipo.nombre_equipo }}
+                </td>
+                <td class="puntos-column">{{ equipo.puntos }}</td>
+                <td class="partidos-column">{{ equipo.cantidad_partidos }}</td>
+                <td class="partidos-column">{{ equipo.partidos_ganados }}</td>
+                <td class="partidos-column">{{ equipo.partidos_empatados }}</td>
+                <td class="partidos-column">{{ equipo.partidos_perdidos }}</td>
+                <td class="goles-column">{{ equipo.goles_a_favor }}</td>
+                <td class="goles-column">{{ equipo.goles_en_contra }}</td>
+                <td class="diff-column">{{ equipo.diferencia_goles }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

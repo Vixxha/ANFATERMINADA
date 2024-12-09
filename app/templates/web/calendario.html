@@ -1,0 +1,196 @@
+{% extends "web/base.html" %}
+
+{% block content %}
+<section id="calendario" class="mt-4">
+    <style>
+        /* Estilos para los títulos de las secciones */
+        h3 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para las tablas de partidos */
+        .table {
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-collapse: collapse;
+        }
+
+        /* Estilos para las celdas de encabezado de tabla */
+        .table th {
+            padding: 8px;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid #ddd;
+            color: #fff; /* Color blanco para las letras */
+            background-color: #2e2525; /* Color negro para el fondo */
+        }
+
+        /* Estilos para las celdas de datos de tabla */
+        .table td {
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid #ddd;
+        }
+
+        /* Estilos para las filas impares de la tabla */
+        .table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* Estilos para las imágenes de los equipos */
+        .equipo-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+    </style>
+
+    <div class="table-responsive">
+        <!-- Título para partidos de Tercera A -->
+        <h3>Partidos de Tercera A</h3>
+        <table class="table table-bordered table-hover calendar-table">
+            <!-- Encabezado de la tabla -->
+            <thead class="thead-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Equipo Local</th>
+                    <th>Icono Local</th>
+                    <th>Resultado</th>
+                    <th>Equipo Visitante</th>
+                    <th>Icono Visitante</th>
+                    <th>Día del partido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre los partidos de Tercera A -->
+                {% for partido in partidos_tercera_a %}
+                    <tr>
+                        <td>{{ partido.fecha }}</td>
+                        <td>{{ partido.equipo_local.nombre_equipo }}</td>
+                        <td>
+                            <img src="{{ partido.equipo_local.imagen.url }}" alt="{{ partido.equipo_local.nombre_equipo }}" class="img-fluid equipo-icon">
+                        </td>
+                        <td>{{ partido.resultado }}</td>
+                        <td>{{ partido.equipo_visitante.nombre_equipo }}</td>
+                        <td>
+                            <img src="{{ partido.equipo_visitante.imagen.url }}" alt="{{ partido.equipo_visitante.nombre_equipo }}" class="img-fluid equipo-icon">
+                        </td>
+                        <td>{{ partido.fechas }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Título para partidos de Zona Norte -->
+        <h3>Partidos de Zona Norte</h3>
+        <table class="table table-bordered table-hover calendar-table">
+            <!-- Encabezado de la tabla -->
+            <thead class="thead-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Equipo Local</th>
+                    <th>Icono Local</th>
+                    <th>Resultado</th>
+                    <th>Equipo Visitante</th>
+                    <th>Icono Visitante</th>
+                    <th>Día del partido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre los partidos de Zona Norte -->
+                {% for partido in partidos_norte %}
+                    <tr>
+                        <td>{{ partido.fecha }}</td>
+                        <td>{{ partido.equipo_local.nombre_equipo }}</td>
+                        <td>
+                            <img src="{{ partido.equipo_local.imagen.url }}" alt="{{ partido.equipo_local.nombre_equipo }}" class="img-fluid equipo-icon">
+                        </td>
+                        <td>{{ partido.resultado }}</td>
+                        <td>{{ partido.equipo_visitante.nombre_equipo }}</td>
+                        <td>
+                            <img src="{{ partido.equipo_visitante.imagen.url }}" alt="{{ partido.equipo_visitante.nombre_equipo }}" class="img-fluid equipo-icon">
+                        </td>
+                        <td>{{ partido.fechas }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Título para partidos de Zona Centro -->
+        <h3>Partidos de Zona Centro</h3>
+        <table class="table table-bordered table-hover calendar-table">
+            <!-- Encabezado de la tabla -->
+            <thead class="thead-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Equipo Local</th>
+                    <th>Icono Local</th>
+                    <th>Resultado</th>
+                    <th>Equipo Visitante</th>
+                    <th>Icono Visitante</th>
+                    <th>Día del partido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre los partidos de Zona Centro -->
+                {% for partido in partidos_centro %}
+                    <tr>
+                        <td>{{ partido.fecha }}</td>
+                        <td>{{ partido.equipo_local.nombre_equipo }}</td>
+                        <td>
+                            <img src="{{ partido.equipo_local.imagen.url }}" alt="{{ partido.equipo_local.nombre_equipo }}" class="img-fluid equipo-icon">
+                        </td>
+                        <td>{{ partido.resultado }}</td>
+                        <td>{{ partido.equipo_visitante.nombre_equipo }}</td>
+                        <td>
+                            <img src="{{ partido.equipo_visitante.imagen.url }}" alt="{{ partido.equipo_visitante.nombre_equipo }}" class="img-fluid equipo-icon">
+                        </td>
+                        <td>{{ partido.fechas }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Título para partidos de Zona Sur -->
+        <h3>Partidos de Zona Sur</h3>
+        <table class="table table-bordered table-hover calendar-table">
+            <!-- Encabezado de la tabla -->
+            <thead class="thead-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Equipo Local</th>
+                    <th>Icono Local</th>
+                    <th>Resultado</th>
+                    <th>Equipo Visitante</th>
+                    <th>Icono Visitante</th>
+                    <th>Día del partido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre los partidos de Zona Sur -->
+                {% for partido in partidos_sur %}
+                    <tr>
+                        <td>{{ partido.fecha }}</td>
+                        <td>{{ partido.equipo_local.nombre_equipo }}</td>
+                        <td>
+                            <img src="{{ partido.equipo_local.imagen.url }}" alt="{{ partido.equipo_local.nombre_equipo }}" class="img-fluid equipo-icon">
+                        </td>
+                        <td>{{ partido.resultado }}</td>
+                        <td>{{ partido.equipo_visitante.nombre_equipo }}</td>
+                        <td>
+                            <img src="{{ partido.equipo_visitante.imagen.url }}" alt="{{ partido.equipo_visitante.nombre_equipo }}" class="img-fluid equipo-icon">
+                        </td>
+                        <td>{{ partido.fechas }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
